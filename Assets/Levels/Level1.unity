@@ -8613,7 +8613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &668477922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8899,7 +8899,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a2a1ace3ca13009428e05fef7d1bdc0d, type: 3}
   m_Resource: {fileID: 8300000, guid: a2a1ace3ca13009428e05fef7d1bdc0d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.599
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9311,6 +9311,10 @@ PrefabInstance:
     - target: {fileID: 7248905442479522743, guid: 076bde4636103c540b8846bd470233c9, type: 3}
       propertyPath: m_Name
       value: RangedEnemyHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248905442479522743, guid: 076bde4636103c540b8846bd470233c9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
