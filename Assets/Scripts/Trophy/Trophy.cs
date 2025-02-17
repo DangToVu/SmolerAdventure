@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Trophy : MonoBehaviour
 {
@@ -13,13 +14,27 @@ public class Trophy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // When player touch the trophy
+        if (other.CompareTag("Player")) 
         {
-            anim.SetTrigger("Win"); 
-            if (audioSource != null && !audioSource.isPlaying) 
+            anim.SetTrigger("Win");
+            if (audioSource != null && !audioSource.isPlaying)
             {
-                audioSource.Play(); 
+                audioSource.Play();
             }
+
+            
+            StartCoroutine(QuitGameAfterDelay(5f));
         }
+    }
+
+    IEnumerator QuitGameAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+       
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
