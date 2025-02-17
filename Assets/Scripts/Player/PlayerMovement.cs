@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Wall Jumping")]
     [SerializeField] private float wallJumpX; //Horizontal wall jump force
     [SerializeField] private float wallJumpY; //Vertical wall jump force
+    [SerializeField] private float wallSlideSpeed = 1.5f; // Wall slide speed
+    [SerializeField] private float wallHangTime = 0.5f; // Time before sliding down the wall
 
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
@@ -30,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
     private float horizontalInput;
+    private bool isWallSliding = false;
+    private float wallHangTimer = 0f;
 
     private void Awake()
     {
@@ -58,18 +62,30 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
         //Adjustable jump height
-        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
-            body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
+        if (Input.GetKeyUp(KeyCode.Space) && body.linearVelocity.y > 0)
+            body.linearVelocity = new Vector2(body.linearVelocity.x, body.linearVelocity.y / 2);
 
         if (onWall())
         {
             body.gravityScale = 0;
-            body.velocity = Vector2.zero;
+            body.linearVelocity = Vector2.zero;
+            if (!isWallSliding)
+            {
+                isWallSliding = true;
+                wallHangTimer = Time.time + wallHangTime; // Start timer when wall sliding starts
+            }
+
+            // If time exceeds wallHangTime, begin sliding down
+            if (Time.time >= wallHangTimer)
+            {
+                body.linearVelocity = new Vector2(body.linearVelocity.x, -wallSlideSpeed);
+            }
         }
         else
         {
+            isWallSliding = false;
             body.gravityScale = 7;
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+            body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
 
             if (isGrounded())
             {
@@ -83,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (coyoteCounter <= 0 && !onWall() && jumpCounter <= 0) return; 
+        if (coyoteCounter <= 0 && !onWall() && jumpCounter <= 0) return;
         //If coyote counter is 0 or less and not on the wall and don't have any extra jumps don't do anything
 
         SoundManager.instance.PlaySound(jumpSound);
@@ -93,17 +109,17 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             if (isGrounded())
-                body.velocity = new Vector2(body.velocity.x, jumpPower);
+                body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
             else
             {
                 //If not on the ground and coyote counter bigger than 0 do a normal jump
                 if (coyoteCounter > 0)
-                    body.velocity = new Vector2(body.velocity.x, jumpPower);
+                    body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
                 else
                 {
                     if (jumpCounter > 0) //If we have extra jumps then jump and decrease the jump counter
                     {
-                        body.velocity = new Vector2(body.velocity.x, jumpPower);
+                        body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
                         jumpCounter--;
                     }
                 }
@@ -120,17 +136,18 @@ public class PlayerMovement : MonoBehaviour
         wallJumpCooldown = 0;
     }
 
-
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
+
     private bool onWall()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
+
     public bool canAttack()
     {
         return horizontalInput == 0 && isGrounded() && !onWall();
