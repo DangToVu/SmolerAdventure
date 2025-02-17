@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1904
     height: 971
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 103
+  controlID: 46
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -274,8 +274,8 @@ MonoBehaviour:
     y: 0
     width: 450
     height: 915
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -319,7 +319,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 29676
+  m_LastSelectedObjectID: 30020
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -565,8 +565,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 24
+    x: 8
+    y: 89
     width: 359
     height: 584
   m_SerializedDataModeController:
@@ -582,10 +582,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1133}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 90f4ffff38f5ffff06f9ffff10fbffff64730000187400002a74000052740000627400006c750000a2750000227800007c780000ee7800002e790000f07900006a7a0000
+      scrollPos: {x: 0, y: 1168}
+      m_SelectedIDs: c0780000
+      m_LastClickedID: 30912
+      m_ExpandedIDs: 223cffff183fffff9e76ffffe683ffff78b3ffffacf9ffff10fbffffcc730000e47300005274000062740000a474000038750000e2750000227800007c780000ac780000ee780000f0790000a07a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -631,8 +631,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 361
-    y: 24
+    x: 368
+    y: 89
     width: 1092
     height: 584
   m_SerializedDataModeController:
@@ -1189,9 +1189,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 85.0545, y: -0.18000743, z: -0.016976597}
+    m_Target: {x: 62.286358, y: -0.5204514, z: -0.06736764}
     speed: 2
-    m_Value: {x: 85.0545, y: -0.18000743, z: -0.016976597}
+    m_Value: {x: 62.286358, y: -0.5204514, z: -0.06736764}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1241,9 +1241,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.014973
+    m_Target: 7.7614703
     speed: 2
-    m_Value: 4.014973
+    m_Value: 7.7614703
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1295,8 +1295,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 634
+    x: 8
+    y: 699
     width: 1453
     height: 279
   m_SerializedDataModeController:
@@ -1321,7 +1321,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Trophy
+    - Assets/Prefabs/Collectibles
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1331,16 +1331,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts/Trophy
+  - Assets/Prefabs/Collectibles
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Unity_Projects\DragonWarrioirOffical\DragonWarrior
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 113}
-    m_SelectedIDs: ac7e0000
-    m_LastClickedID: 32428
-    m_ExpandedIDs: 00000000347e0000
+    m_SelectedIDs: 4a1e0100
+    m_LastClickedID: 73290
+    m_ExpandedIDs: 00000000347e0000987e00009c7e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1484,8 +1484,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1455
-    y: 24
+    x: 1462
+    y: 89
     width: 449
     height: 889
   m_SerializedDataModeController:
