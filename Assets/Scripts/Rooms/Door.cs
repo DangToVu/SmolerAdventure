@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private Transform previousRoom;
-    [SerializeField] private Transform nextRoom;
-    [SerializeField] private CameraController cam;
+    [SerializeField] public Transform previousRoom;
+    [SerializeField] public Transform nextRoom;
+    [SerializeField] public CameraController cam;
 
     private void Awake()
     {
@@ -31,4 +31,15 @@ public class Door : MonoBehaviour
             }
         }
     }
+
+    public void setNextRoom(Transform nextRoom)
+    {
+        this.nextRoom = nextRoom;
+    }
+
+    public void setPreviousRoom(Transform previousRoom)
+    {
+        this.previousRoom = previousRoom;
+    }
+
 }
