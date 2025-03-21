@@ -15,21 +15,24 @@ public class Trampoline : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (canBounce && other.CompareTag("Player"))
+        if (canBounce)
         {
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if (rb != null && rb.linearVelocity.y <= 0f) // Chỉ bật nếu Player đang rơi hoặc đứng yên
+            if (other.CompareTag("Player"))
             {
-                animator.SetTrigger("TrampolineJump"); // Chạy animation bật nhảy
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, bounceForce); // Bật nhân vật lên
-
-                if (audioSource != null)
+                Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+                if (rb != null && rb.linearVelocity.y <= 0f) // Chỉ bật nếu Player đang rơi hoặc đứng yên
                 {
-                    audioSource.Play(); // Phát âm thanh
-                }
+                    animator.SetTrigger("TrampolineJump"); // Chạy animation bật nhảy
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, bounceForce); // Bật nhân vật lên
 
-                canBounce = false; // Chặn bật liên tục
-                Invoke(nameof(ResetAnimation), 0.5f); // Chờ animation kết thúc rồi reset
+                    if (audioSource != null)
+                    {
+                        audioSource.Play(); // Phát âm thanh
+                    }
+
+                    canBounce = false; // Chặn bật liên tục
+                    Invoke(nameof(ResetAnimation), 0.5f); // Chờ animation kết thúc rồi reset
+                }
             }
         }
     }

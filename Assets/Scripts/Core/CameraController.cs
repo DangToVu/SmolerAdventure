@@ -6,12 +6,18 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float speed;
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
+    private Camera cam;
 
     // Follow player
     [SerializeField] private Transform player;
     [SerializeField] private float aheadDistance;
     [SerializeField] private float cameraSpeed;
     private float lookAhead;
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     private void Update()
     {
@@ -28,6 +34,8 @@ public class CameraController : MonoBehaviour
     {
         // Update the camera's position based on the new room's position
         currentPosX = _newRoom.position.x;
+        cam.farClipPlane = _newRoom.position.x + 500;
+        cam.nearClipPlane = _newRoom.position.x - 1500;
     }
 
 }
