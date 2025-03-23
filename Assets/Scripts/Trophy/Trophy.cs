@@ -31,18 +31,21 @@ public class Trophy : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // Lấy tên scene hiện tại
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
-        // Kiểm tra nếu còn level tiếp theo thì load, nếu hết thì về level 1
+        // Kiểm tra nếu còn level tiếp theo thì load, nếu không thì thoát game
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
-            SceneManager.LoadScene(0); // Nếu hết level, quay về level đầu
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // Dừng game trong Unity Editor
+#else
+            Application.Quit(); // Thoát game khi build
+#endif
         }
     }
 }
