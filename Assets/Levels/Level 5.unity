@@ -24319,12 +24319,20 @@ PrefabInstance:
       value: End_Idle
       objectReference: {fileID: 0}
     - target: {fileID: 2904031495469559343, guid: 1be3ead928b98534183d2871ff8e8b5f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.5695
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904031495469559343, guid: 1be3ead928b98534183d2871ff8e8b5f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.8030005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904031495469559343, guid: 1be3ead928b98534183d2871ff8e8b5f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.069999695
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2904031495469559343, guid: 1be3ead928b98534183d2871ff8e8b5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39
+      value: 0.507
       objectReference: {fileID: 0}
     - target: {fileID: 2904031495469559343, guid: 1be3ead928b98534183d2871ff8e8b5f, type: 3}
       propertyPath: m_LocalPosition.z
