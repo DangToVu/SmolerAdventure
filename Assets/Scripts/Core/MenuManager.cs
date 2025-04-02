@@ -5,24 +5,75 @@
 
     public class MenuManager : MonoBehaviour
     {
-        // Hàm để tải Level 1 khi nhấn Start Game
-        public void StartGame()
+        [SerializeField] private GameObject menuUI; // Gán GameObject "Menu" trong Inspector
+        [SerializeField] private GameObject selectLevelUI; // Gán GameObject "SelectLevelUI" trong Inspector
+
+        private void Start()
         {
-            SceneManager.LoadScene("Level 1"); // Dùng tên scene, hoặc số thứ tự (ví dụ: 1)
+            if (menuUI == null)
+            {
+                Debug.LogError("MenuUI is not assigned in the Inspector! Please assign it.");
+                return;
+            }
+            if (selectLevelUI == null)
+            {
+                Debug.LogError("SelectLevelUI is not assigned in the Inspector! Please assign it.");
+                return;
+            }
+
+            menuUI.SetActive(true);
+            selectLevelUI.SetActive(false);
+            Debug.Log("MenuManager Start: MenuUI is active, SelectLevelUI is inactive.");
         }
 
-        // Hàm để dừng game khi nhấn Quit
+        public void StartGame()
+        {
+            Debug.Log("StartGame called. Loading Level 1...");
+            SceneManager.LoadScene("Level 1");
+        }
+
+        public void ShowSelectLevel()
+        {
+            Debug.Log("ShowSelectLevel called.");
+            if (menuUI == null || selectLevelUI == null)
+            {
+                Debug.LogError("Cannot show SelectLevelUI: MenuUI or SelectLevelUI is not assigned!");
+                return;
+            }
+
+            menuUI.SetActive(false);
+            selectLevelUI.SetActive(true);
+            Debug.Log("MenuUI hidden, SelectLevelUI shown.");
+        }
+
+        public void BackToMenu()
+        {
+            Debug.Log("BackToMenu called.");
+            if (menuUI == null || selectLevelUI == null)
+            {
+                Debug.LogError("Cannot return to Menu: MenuUI or SelectLevelUI is not assigned!");
+                return;
+            }
+
+            selectLevelUI.SetActive(false);
+            menuUI.SetActive(true);
+            Debug.Log("SelectLevelUI hidden, MenuUI shown.");
+        }
+
+        public void LoadLevel(string levelName)
+        {
+            Debug.Log($"LoadLevel called with level: {levelName}");
+            SceneManager.LoadScene(levelName);
+        }
+
         public void QuitGame()
         {
-            // Dừng game trong Editor
+            Debug.Log("QuitGame called.");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-            // Thoát game khi chạy ở bản build (ngoài Editor)
             Application.Quit();
 #endif
-
-            Debug.Log("Game Quit"); // Để kiểm tra
         }
     }
 }
